@@ -22,11 +22,6 @@ public class 문자열 {
 		str = "안녕하세요";
 		System.out.println("문자열"+str);
 		System.out.println();
-		
-		
-		
-		
-		
 	}
 
 }

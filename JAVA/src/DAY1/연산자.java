@@ -55,34 +55,7 @@ public class 연산자 {
 		 int num5 = 97;
 		  
 		 System.out.println(국어 + num4 + num5);
-		 System.out.println((국어 + num4 + num5)/3.0);
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+		 System.out.println((국어 + num4 + num5)/3.0);		 
 		 
 		 
 		 

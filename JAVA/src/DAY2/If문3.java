@@ -28,8 +28,8 @@ public class If문3 {
 		
 		if(num > 0) {
 			System.out.println(num + "는 양수");
-		}else if(num < 0){		
-			System.out.println(num + "는 음수");
+
+
 	    }else{
             System.out.println(num);
 	    }

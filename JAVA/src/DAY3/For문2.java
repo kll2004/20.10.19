@@ -1,3 +1,4 @@
+package DAY3;
 
 public class For문2 {
 

@@ -39,7 +39,7 @@ public class 배열2 {
 		System.out.println();
 		
 		
-		
+		//Scanner를 통해 배열의 값 저장하는 코드
 		Scanner scan = new Scanner(System.in);
 		for(int i = 0; i<arr1.length; i++) {
 			System.out.println(i+1+"번쨰 정수를 입력 : ");
@@ -53,27 +53,6 @@ public class 배열2 {
 			System.out.print(arr1[i]+" ");
 		}
 		System.out.println();
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 
 	}

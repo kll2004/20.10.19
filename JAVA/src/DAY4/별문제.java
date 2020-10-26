@@ -10,7 +10,7 @@ public class 별문제 {
 		 * *****
 		 * *****
 		 * */
-		int i, j;
+		int i,j;
 		for(i = 1; i<=5; i++) {
 		  for(j = 1; j<=5 ; j++) {
 			System.out.print("*");
@@ -27,6 +27,20 @@ public class 별문제 {
 		 * ****     i = 4 * = 4
 		 * *****    i = 5 * = 5
 		 * */
+		
+		
+		for(i=1; i<=5; i++) {
+			for(j=1; j<=5; j++) {
+				System.out.println(" ");
+			}
+			for(j=1; j<=i; j++) {
+				System.out.println("*");
+			}
+			System.out.println();
+		}
+			
+		
+		
 		
 		
 		for(i = 1; i<=1; i++) {
@@ -69,6 +83,8 @@ public class 별문제 {
 			}
 		
 		
+		
+	
 		//이중 반복문을 이용하여 아래와 같이 출력되도록 작성하세요
 		
 		/*     *    i = 1 * = 1 공 = 4
@@ -78,43 +94,7 @@ public class 별문제 {
 		 * *****    i = 5 * = 5 공 = 0
 		 *                
 		 * */
-		
-		
-		for(i=1; i<=5; i++){
-			System.out.println(" ");
-			for(j=1; j<=5-i; j++) {
-				for(i=1; i<=i; i++) {
-					System.out.println("*");
-					System.out.println();
-				}
-			}
-				
-					
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 
 	}
 

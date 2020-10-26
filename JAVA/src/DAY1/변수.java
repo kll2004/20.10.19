@@ -7,7 +7,7 @@ public class 변수 {
 		//*여러줄 주석*//는 한줄 주석
 		//변수타입 변수 명;
 		//변수선언 방법
-		char ch; //문자형 변수 ch를 선언
+		/*char ch; //문자형 변수 ch를 선언
 		int num1;
 		long num2;
 		float num3; 
@@ -53,26 +53,7 @@ public class 변수 {
 		//정수형 변수 a는 10을, b는 20을, c는30을 저장하도록 선언
 		int a = 10, b = 20, c = 30;
 		int d, e = 20;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		*/
 		
 	}
 

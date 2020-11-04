@@ -3,9 +3,7 @@ package DAY6;
 public class 배열3 {
 
 	public static void main(String[] args) {
-		/*10개짜리 배열을 생성하여 0번지에 1,1번지에 2,..9번지에 10을
-		 * 저장하고 출력하는 예제
-		 * */
+		//10개짜리 배열을 생성하여 0번지에 1,1번지에 2,..9번지에 10을 저장하고 출력하는 예제
 		int size = 10;
 		int arr[] = new int[size];
 		arr[0] = 1;
@@ -32,9 +30,7 @@ public class 배열3 {
 		for(int i=0; i<size; i++) {
 			arr[i] = i+1;
 			System.out.println("arr["+i+"]"+arr[i]);
-		}
-	
-
+		}	
 	}
 
 }

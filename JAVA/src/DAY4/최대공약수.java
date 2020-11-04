@@ -22,6 +22,7 @@ public class 최대공약수 {
 		System.out.print("두 정수를 입력하세요 : ");
         num1 = scan.nextInt();
         num2 = scan.nextInt();
+        
         for(i = 1 ; i <= num1 ; i++){
         	if(num1 % i == 0 && num2 % i ==0) {
         		gcd = i ;
@@ -36,10 +37,7 @@ public class 최대공약수 {
               break;
           }
         }
-		    scan.close();
-
-		
-
+		    scan.close();		
 	}
 
 }

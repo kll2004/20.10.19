@@ -37,7 +37,6 @@ public class 배열5 {
 		System.out.println("3명 학생의 총점 : "+sum);
 		System.out.println("3명 학생의 총점 : "+avg);		
 		scan.close();
-
 	}
 
 }

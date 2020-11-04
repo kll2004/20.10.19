@@ -22,10 +22,10 @@ public class 이중for문 {
 		
 		/*구구단 1단부터 9단까지 출력하는 예제*/
 
-		int num = 3;
+		int num = i;
 		for(num=2; num<=9; num++) {
 			for(i =1 ; i <=9 ; i++) {
-				System.out.println(num + " x " + i + " = " + num*1);
+				System.out.println(num + " x " + i + " = " + num*i);
 			}	
 		}
 		    
@@ -43,15 +43,6 @@ public class 이중for문 {
 			 	System.out.println(num+ " ");
 	    }
 	}
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
 	    
 	    
 	}

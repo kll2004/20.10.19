@@ -24,5 +24,4 @@ public class 배열8 {
 		}
 		System.out.println();
 	}
-
 }

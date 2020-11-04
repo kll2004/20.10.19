@@ -40,7 +40,7 @@ public class 클래스1 {
 		 *  
 		 * -private으로 된 멤버 메소드와 변수는 다른 클래스에서 사용할 수 없다.
 		 *  - 일반적으로 멤버 변수는 private로하고, 맴버 메소드는 public으로 한다.
-		 *  - 일반적으로 privat으로 된 멤버들은 getter와setter룰 만들어준다.
+		 *  - 일반적으로 private으로 된 멤버들은 getter와setter룰 만들어준다.
 		 *    해당 멤버 변수의 값을 변경가능하도록 한다.
 		 *  - private으로 된 멤버 변수는 public으로 된 멤버 메소드를 통해 접근한다.
 		 * */
@@ -66,7 +66,7 @@ public class 클래스1 {
  * point 클래스 : 2차원 좌표평면의 점을 나타내기위한 클래스
  * - 속성 : x축좌표, y축 좌표
  * - 기능 : x,y좌표 출력 기능, x,y좌표 이동 기능
- **/
+ * */
 class point{
 	public int x;
 	public int y;	

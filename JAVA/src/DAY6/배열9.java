@@ -19,7 +19,5 @@ public class 배열9 {
 			}
 			System.out.println();
 		}
-
 	}
-
 }

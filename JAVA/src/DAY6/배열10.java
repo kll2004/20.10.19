@@ -33,11 +33,9 @@ public class 배열10 {
 		 * 배열값을 확인할 때 사용
 		 * 배열값을 수정할 때 사용하지 않음(사용할 수 있지만 그럴바에는 그냥for문을 사용)
 		 * */
-
 		for(int tmp : count) {
 			System.out.print(tmp + " ");
 		}
 		System.out.println();
 	}
-
 }

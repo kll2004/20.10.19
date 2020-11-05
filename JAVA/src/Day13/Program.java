@@ -8,10 +8,10 @@ import java.util.Scanner;
  * - 수간등록기능
  * - 수강철회기능
  * */
-public interface program {
+public interface Program {
 	void printStudent();
 	void insertStudent(Scanner scan);
-	void searchStudent(scanner scan);
-	void registerSubject(scanner scan);
-	void deletesubject(scanner scan);
+	void searchStudent(Scanner scan);
+	void registerSubject(Scanner scan);
+	void deletesubject(Scanner scan);
 }

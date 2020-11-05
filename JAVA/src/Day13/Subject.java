@@ -84,4 +84,7 @@ public class Subject {
 		this.subjectCatrgory = subjectCatrgory;
 		this.subjectSchedule = subjectSchedule;
 	}
+	public Subject(String sTitle) {
+		subjectTitle = sTitle;
+	}
 }

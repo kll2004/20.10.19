@@ -1,7 +1,5 @@
 package Day13;
 
-import java.util.Arrays;
-
 /* Student(학생) 클래스를 생성하세요. 단, 클래스는 새로 만들기를 이용하여 만드세요.
  * 학생클래스의 필요한 멤버 변수/ 메소드를 생성하세요.
  *  - 학생클래스 : 학생 1명의 정보를 나타내는 클래스
@@ -15,15 +13,13 @@ import java.util.Arrays;
  *  - 생성자
  */
 public class Student {
-	private static final char SubjectList = 0;
 	private String name;//학생이름
 	private String residentNum;//주민번호
 	private String studentNum;//학번
 	private String faculty;//학부
 	private String major;//학과
 	private Subject[] subjectList;//수강과목들
-	private int term;//학기
-	
+	private int term;//학기	
 	private int subjectCount;//수강과목갯수
 	
 	public void insertSubject(Subject subject) {
@@ -37,13 +33,16 @@ public class Student {
 //		배열이 꽉찬 경우
 		if(subjectCount == subjectList.length) {
 //			배열을 늘려주고 복사하는 작업
-		}else {
+			Subject [] tmp = new Subject[subjectCount+20];
+			System.arraycopy(subjectList, 0, tmp, 0 ,subjectList.length);
+			subjectList = tmp;
+		}
 			subjectList[subjectCount] = subject;
 			subjectCount++;
-		}
+		
 	}
 	public void deleteSubject(String subjuecTitle) {
-		int index = -1;
+		int index = -1;//삭제할 과목이 있는 배열의 위치
 		if(subjuecTitle == null) {
 			return;
 		}
@@ -119,7 +118,6 @@ public class Student {
 	}
 	public void setTerm(int term) {
 		this.term = term;
-		
 	}
 	@Override
 	public String toString() {

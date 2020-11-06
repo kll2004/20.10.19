@@ -9,8 +9,7 @@ public class Loto {
 	//1~45사이의 정수를 생성하는 반환하는 메소드
 	protected int random() {
 		return new Random().nextInt(45)+1;
-	}
-	//1~45사이의 중복되지 않은 번호 6개를 생성하는 메소드
+	} //1~45사이의 중복되지 않은 번호 6개를 생성하는 메소드
 	public void randomLotto() {
 		init();
 		int cnt = 0;//저장된 중복되지 않은 랜덤 수의 갯수
@@ -52,5 +51,7 @@ public class Loto {
 //	}
 		System.arraycopy(arr, 0, numbers, 0, numbers.length);
 	}
-	
+	public int[] getNumbers() {
+		return numbers;
+	}
 }

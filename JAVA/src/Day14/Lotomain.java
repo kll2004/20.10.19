@@ -1,21 +1,38 @@
 package Day14;
 
+import java.util.Scanner;
+
 public class Lotomain {
 	
-	public static void  name(String[] args) {
-		Loto lotto = new Loto();
-		lotto.randomLotto();
-		System.out.println(lotto);
-		int []arr = new int[] {1,2,3,4,5,6};
-		lotto.insertNumber(arr);
-		System.out.println(lotto);
-		System.out.println("------------");
-		Loto2 Loto = new Loto2();
-		lotto.randomLotto();		
-		System.out.println(Loto);		
-		int []arr2 = new int[] {1,2,3,4,5,6,7};		
-		lotto.insertNumber(arr2);
-		System.out.println(Loto);
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		LottoManager lm = new LottoManager();
+		int menu = 0;
+		
+		do {
+			lm.printMenu();
+			menu = scan.nextInt();
+			switch(menu) {
+			case 1: 
+				lm.createLotto(scan);
+				break;
+			case 2: 
+				lm.createLottoAuto();
+				break;
+			case 3: 
+				lm.insertLotto(scan);
+				break;
+			case 4: 
+				lm.chekLotto();
+				break;
+			case 5: 
+				lm.printLotto();
+				break;
+			case 6: break;
+			default :
+				lm.printString("잘못된 메뉴");
+			}
+		}while(menu !=6);
+		lm.printString("프로그램 종료");
 	}
-
 }

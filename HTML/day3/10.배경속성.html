@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경속성</title>
+    <style>
+        /*
+        배경 색 : background-color
+        배경 이미지 : background-image
+        배경 색과 배경이미지를 둘가 저장한 경우 배경 이미지가 출력되지 않는 부분은 배경색으로 출력
+        배경 이미지 크기 : background-size
+         - 가로 세로 순으로 크기 입력
+         - 배경 이미지 반복 : background-reapeat
+          - no-repeat : 반복 x
+          - repeat-x : x축으로 반복
+          - repeat-y : y축으로 반복
+          - round : x축, y축 반복
+          - 기본값은 반복
+        - 배경 이미지 위치 : background-position
+         - x축, y축 순
+         - center center : 가운데
+         배경 : backgronud-color backgronud
+        */
+        .box{
+            background-color: yellow;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cc.logo.circle.svg/64px-Cc.logo.circle.svg.png);
+            background-size: 100px 100px;
+            background-repeat: no-repeat;
+            background-position: 30px 100px;
+            background: yellow url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cc.logo.circle.svg/64px-Cc.logo.circle.svg.png);
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .box2{
+            width: 300px;
+            height: 300px;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cc.logo.circle.svg/64px-Cc.logo.circle.svg.png);
+            background-size: 100%;
+        }
+        /*가로 : 300px, 세로300px인 박스2클래스를 생성하여 해당 박스의 배경 이미지가 꽉 차도록 작성하세요.*/
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

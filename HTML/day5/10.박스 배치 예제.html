@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opcity.예제</title>
+    <style>
+        *{
+        padding :0;
+        margin :0;
+        }
+        a{
+            text-decoration: none;
+        }
+        .header{
+            min-width: 1190px;
+            height: 161px;
+        }
+        .menu{
+            min-width: 1190px;
+            height: 50px;
+            border-top: 1px solid rgb(224, 227, 230);
+            border-bottom: 1px solid rgb(224, 227, 230);
+        }
+        .contents{
+            min-width: 1190px;
+        }
+        .container{
+            height: 100%;
+            width: 1190px;
+            margin: 0 auto;
+        }
+        .contents>.container{
+            padding: 20px 30px;
+            box-sizing: border-box;
+        }
+        .left{
+            width: 750px;
+            height: 100%;
+            float: left;
+        }
+        .add img{
+            width: 750px;
+            height: 135px;
+            display: block;
+        }
+        .box{
+            margin-bottom: 12px;
+        }
+        .right{
+            width: 350px;
+            height: 100%;
+            float: right;
+        }
+        .login-box{
+            width: 100%;
+            height: 135px;
+            border: 1px solid rgb(218, 225, 230);
+            background-color: rgb(247, 249, 250);
+            padding: 16px 16px 12px 17px;
+            box-sizing: border-box;
+        }
+        .login-box .title{
+            color: gray;
+            font-size: 12px;
+            line-height: 16px;
+        }
+        .login-box>.in-box{
+            width: 100%;
+            height: 100%;
+        }
+        .login-btn{
+            display: block;
+            background-color: #19ce60;
+            border: 1px solid #15c654;
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: bold;
+            color: #fff;
+            padding: 15px 0;
+            border-radius: 2px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 11px;
+        }
+        .login-box .sub-right{
+            float: right;
+        }
+        .login-box .sub-left{
+            float: left;
+        }
+        .login-box .sub-box::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        .find-id, .find-pw, .signup{
+            color: #404040;
+            line-height: 16px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .login-box .sub-box{
+            margin: 10px 8px 0px 4px;
+        }
+        .login-box .point{
+            display: inline-block;
+            height: 4px;
+            width: 4px;
+            background-color: #404040;
+            border-radius: 2px;
+            line-height: 5px;
+        }
+        .left-box1{
+            position: relative;
+            padding: 12px 15px 11px 15px;
+            background-color: #f7f9fa;
+            border: 1px solid #dae1e6;
+            line-height: 24px;
+            font-size: 12px;
+        }
+        .issue-box{
+            line-height: 24px;
+            height: 49px;
+            box-sizing: border-box;
+            padding: 12px 15px 11px 15px;
+            background-color: #f7f9fa;
+            border: 1px solid #dae1e6;
+            position: relative;
+        }
+        .timesquare-box{
+            height: 49px;
+            box-sizing: border-box;
+            border: 1px solid #dae1e6;
+            position: relative;
+        }
+        .timesquare-card{
+            height: 100%;
+            padding-right: 67px;
+            overflow: hidden;
+        }
+        .timesquare-box .btn-box{
+            position: absolute;
+            top: 11px;
+            right: 10px;
+            overflow: hidden;
+        }
+        .timesquare-box .btn-box .prev,
+        .timesquare-box .btn-box .next{
+            float: left;
+            background-color: #fff;
+            border: 1px solid #e4e8eb;
+        }
+        .timesquare-box .btn-box .next{
+            margin-left: -1px;
+        }
+        .timesquare-box .btn-box .prev::before{
+            content: '';
+            width: 6px;
+            height: 9px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 7px 8px 6px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -351px -296px;
+        }
+        .timesquare-box .btn-box .next::before{
+            content: '';
+            width: 6px;
+            height: 9px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 7px 8px 6px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -335px -296px;
+        }
+        .issue-box .left-box{
+            float: left;
+        }
+        .issue-box .right-box{
+            float: right;
+        }
+        .issue-box .link-news{
+            margin-right: 7px;
+            font-size: 13px;
+            color: #000;
+            font-weight: bold;
+            line-height: 24px;
+            float: left;
+        }
+        .issue-box .link-news::after{
+            display: inline-block;
+            width: 6px;
+            height: 10px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            content: '';
+            background-position: -262px -125px;
+            margin: 7px 0 0 6px;
+        }
+        .rolling-news{
+            height: 24px;
+            width: 310px;
+            float: left;
+            overflow: hidden;
+            background-color: skyblue;
+        }
+        .issue-box .link-navernews,
+        .issue-box .link-enter,
+        .issue-box .link-sports,
+        .issue-box .link-economic{
+            float: left;
+            height: 24px;
+            font-size: 13px;
+            line-height: 24px;
+            color: #202020;
+            font-weight: bold;
+        }
+        .issue-box .link-navernews{
+            color: #3565c9;
+        }
+        .issue-box .link-enter,
+        .issue-box .link-sports,
+        .issue-box .link-economic{
+            margin: 0 4px 0 7px;
+        }
+        .issue-box .link-navernews::after{
+            width: 3px;
+            height: 3px;
+            display: inline-block;
+            content: '';
+            border-radius: 50%;
+            vertical-align: 3px;
+            margin-left: 8px;
+            background-color: #c8ccd1;
+        }
+        .stand-box{
+            height: 18px;
+            padding: 22px 0 16px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .stand-box .left-box{
+            float: left;
+            height: 100%;
+        }
+        .stand-box .right-box{
+            float: right;
+            height: 100%;
+        }
+        .stand-box .news-stand-link{
+            font-weight: bold;
+            color: #000;
+            float: left;
+        }
+        .stand-box .news-stand-link::before{
+            content: '';
+            display: inline-block;
+            width: 27px;
+            height: 24px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -228px -296px;
+            margin: -6px 1px 0 0;
+            vertical-align: top;
+        }
+        .stand-box .news-stand-link::after{
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 10px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -262px -125px;
+            margin: 7px 0 0 6px;
+            vertical-align: top;
+        }
+        .stand-box .sub-press-link{
+            color: #505050;
+            margin-left: 10px;
+            float: left;
+            font-size: 14px;
+        }
+        .stand-box .all-press-link{
+            color: #000;
+            font-weight: bold;
+            float: left;
+        }
+        .stand-box .all-press-link::before{
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            display: inline-block;
+            content: '';
+            background-color: #c7ccd1;
+            margin: 0 8px 0 4px;
+            vertical-align: 3px;
+        }
+        .stand-box .list-btn,
+        .stand-box .press-btn,
+        .stand-box .setting-link{
+            float: left;
+            padding: 0 9px;
+        }
+        .stand-box .list-btn>.i-list{
+            display: inline-block;
+            width: 14px;
+            height: 13px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -420px -379px;
+            vertical-align: top;
+            opacity: .7;
+        }
+        .stand-box .setting-link>.i-setting{
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -420px -276px;
+            vertical-align: top;
+            opacity: .7;
+            margin: -1px 0 1px;
+        }
+        .stand-box .press-btn>.i-press{
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+            background-size: 440px 410px;
+            background-position: -153px -327px;
+            vertical-align: top;
+        }
+        .stand-list-box{
+            height: 260px;
+            position: relative;
+        }
+        .stand-list-box .stand-col-box{           
+            width: calc(100% / 6);
+            float: left;
+            padding: 23px 0 22px;
+            text-align: center;
+            height: 20px;
+        }
+        .stand-list-box .stand-col-box>img{
+            height: 20px;
+            vertical-align: top;
+        }
+        .bar-list-box{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border: 1px solid #dae1e6;
+            z-index: -1;
+        }
+        .bar-list-box>div{
+            position: absolute;
+            background-color: #e4e8eb;
+        }
+        .bar-list-box>.bar-row1{
+            height: 1px;
+            left: 0;
+            right: 0;
+            top: 65px;
+        }
+        .bar-list-box>.bar-row2{
+            height: 1px;
+            left: 0;
+            right: 0;
+            top: 130px;
+        }
+        .bar-list-box>.bar-row3{
+            height: 1px;
+            left: 0;
+            right: 0;
+            top: 195px;
+        }
+        .bar-list-box>.bar-col1{
+            width: 1px;
+            bottom: 0;
+            top: 0;
+            left: 124px;
+        }
+        .bar-list-box>.bar-col2{
+            width: 1px;
+            bottom: 0;
+            top: 0;
+            left: 248px;
+        }
+        .bar-list-box>.bar-col3{
+            width: 1px;
+            bottom: 0;
+            top: 0;
+            left: 372px;
+        }
+        .bar-list-box>.bar-col4{
+            width: 1px;
+            bottom: 0;
+            top: 0;
+            left: 497px;
+        }
+        .bar-list-box>.bar-col5{
+            width: 1px;
+            bottom: 0;
+            top: 0;
+            left: 622px;
+        }
+        .bar-row1 .sub-ch{
+            float: left;
+            height: 100%;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/d27e4ce492.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container"></div>
+    </div>
+
+    <div class="menu">
+        <div class="container"></div>
+    </div>
+    <div class="contents">
+        <div class="container">
+            <div class="left">
+                <div class="add box">
+                    <a target="_blank" href="https://siape.veta.naver.com/fxclick?eu=EU10041888&calp=-&oj=A4YjrwVVtw8fsPrA6QtFfFnp0bemvv%2BINGJZ7y1jWZBGYV6e%2BSf9t8H6E0S95P48oIR4aN13uc6p3PSpWl%2F9wQ&ac=8197913&src=4707501&br=3317174&evtcd=C1017&x_ti=1311&tb=&oid=&sid1=&sid2=&rk=edd921f4afcc0afdece488a39d203462&eltts=RTgkMJQnXxmQXVt41%2FHSNA%3D%3D&lu=&brs=Y&">
+                        <img src="https://ssl.pstatic.net/tveta/libs/1303/1303395/834504bd2a7c285b1030_20201124172301342.jpg" alt="광고">                       
+                    </a>
+                </div>
+                <div class="issue-box box">
+                    <div class="left-box">
+                        <a href="https://news.naver.com/main/list.nhn?mode=LPOD&mid=sec&sid1=001&sid2=140&oid=001&isYeonhapFlash=Y" class="link-news">연합뉴스</a>
+                        <div class="rolling-news"></div>
+                    </div>
+                    <div class="right-box">
+                        <a href="https://news.naver.com/" class="link-navernews">네이버 뉴스</a>
+                        <a href="https://entertain.naver.com/home" class="link-enter">연예</a>
+                        <a href="https://sports.news.naver.com/index.nhn" class="link-sports">스포츠</a>
+                        <a href="https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101" class="link-economic">경제</a>    
+                    </div>                
+                </div>
+                <div class="stand-box">
+                    <div class="left-box">
+                        <a href="#" class="news-stand-link">뉴스스탠드</a>
+                        <a href="#" class="sub-press-link">구독한 언론사</a>
+                        <a href="#" class="all-press-link">전체언론사</a>
+                    </div>
+                    <div class="right-box">
+                        <a href="#" class="list-btn"><i class="i-list"></i></a>
+                        <a href="#" class="press-btn"><i class="i-press"></i></a>
+                        <a href="#" class="setting-link"><i class="i-setting"></i></a>
+                    </div>
+                </div>
+                <div class="stand-list-box">
+                    <div class="stand-row-box">                     
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                            <a href="#" class="sub-ch">구독</a>
+                            <a href="#" class="lead-ch">기사보기</a>                           
+                        </div>                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                   
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                      
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                       
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">                           
+                        </div>                                            
+                    </div>
+                    <div class="stand-row-box">
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                                            
+                    </div>
+                    <div class="stand-row-box">
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                                            
+                    </div>
+                    <div class="stand-row-box">
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>
+                        
+                        <div class="stand-col-box">
+                            <img height="20" alt="스포탈코리아" class="news_logo" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png" loading="lazy">
+                        </div>                                            
+                    </div>
+                    <div class="bar-list-box">
+                        <div class="bar-row1"></div>
+                        <div class="bar-row2"></div>
+                        <div class="bar-row3"></div>
+                        <div class="bar-col1"></div>
+                        <div class="bar-col2"></div>
+                        <div class="bar-col3"></div>
+                        <div class="bar-col4"></div>
+                        <div class="bar-col5"></div>
+                    </div>                   
+                </div>       
+            </div>     
+            <div class="right">
+                <div class="login-box box">
+                    <div class="in-box">
+                        <p class="title">네이버를 더 안전하고 편리하게 사용하세요.</p>
+                        <a class="login-btn" href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com">NAVER 로그인</a>
+                        <div class="sub-box">
+                        <div class="sub-left">                           
+                            <a href="https://nid.naver.com/user2/help/idInquiry.nhn?menu=idinquiry"class="find-id"><i class="fas fa-lock"></i> 아이디</a>
+                            <span class="point"></span>
+                            <a href="https://nid.naver.com/user2/help/pwInquiry.nhn?menu=pwinquiry"class="find-pw">비밀번호찿기</a>
+                        </div>
+                        <div class="sub-right">
+                            <a href="https://nid.naver.com/user2/V2Join.nhn?m=agree&lang=ko_KR&cpno=" class="signup"><i class="fas fa-user"></i> 회원가입</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timesquare-box box">
+                    <div class="timesquare-card"></div>
+                    <div class="btn-box">
+                        <a href="#" class="prev"></a>
+                        <a href="#" class="next"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

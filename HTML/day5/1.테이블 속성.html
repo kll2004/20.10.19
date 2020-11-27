@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>테이블 속성</title>
+	<style>
+		table{
+			border: 1px solid black;
+			border-collapse: collapse; 
+		}
+		th,td{
+			border: 1px solid red;
+			width: 100px;
+			height: 10px;
+			text-align: center;
+		}
+		thead>tr:first-child{
+			background-color: yellow;
+		}
+		tbody>tr:hover,
+		tbody>tr:nth-child(even):hover{
+			background-color: violet;
+		}
+		tbody>tr:nth-child(even){
+			background-color: tomato;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>국어</th>
+				<th>영어</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>홍길동</th>
+				<th>100</th>
+				<th>90</th>
+			</tr>
+			<tr>
+				<th>임꺽정</th>
+				<th>90</th>
+				<th>80</th>
+			</tr>
+			<tr>
+				<th>이순신</th>
+				<th>100</th>
+				<th>90</th>
+			</tr>
+			<tr>
+				<th>유관순</th>
+				<th>90</th>
+				<th>80</th>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>합</th>
+				<th>190</th>
+				<th>170</th>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

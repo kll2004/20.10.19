@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hover이벤트2</title>
+    <script src="//code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        .btn{
+            width: 100%;
+            display: block;
+            border: 10px solid green;
+            cursor: pointer;
+            font-size: 50px;
+        }
+        .box{
+            border: 10px solid black;
+            background-color: pink;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">반복</button>
+    <div class="box"></div>
+    <script>
+        /*
+		- 버튼과 박스를 생성
+		- 버튼에 마우스를 가져대면 박스가 천천히 위로 접힘
+		- 버튼을 마우스에서 떼면 박스가 천천히 아래로 내려감
+		*/
+        $(function(){
+            $('.btn').hover(function(){
+                $('.box').slideToggle();
+            });
+        });
+    </script>
+</body>
+</html>

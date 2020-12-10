@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>click이벤트예제</title>
+    <script src="//code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <button class="up">업</button>
+    <button class="down">다운</button>
+    <script>
+        /*
+        - up버튼과 down버튼을 생성
+        - up버튼을 누르면 숫자가 1부터 1씩 증가하여 콘솔에 출력
+        - down버튼을 누르면 숫자가 현재 숫자에서 1씩 감소하여 콘솔에 출력
+        - 현재 숫자의 초기값은 1
+        - 1에서 down버튼을 클릭하면 0이 아닌 6이 되게함
+        - 6에서 up버튼을 클릭하면 7이아닌 1이 되게함        
+        */
+        $(function(){
+            var cnt =1;
+            $('.up').click(function(){
+                cnt++;
+                if(cnt==7){
+                    cnt=1;
+                }
+                console.log(cnt);
+            });
+            $('.down').click(function(){
+                cnt--;
+                if(cnt==0){
+                    cnt=6;
+                }
+                console.log(cnt);
+            });
+        });
+    </script>
+    
+</body>
+</html>

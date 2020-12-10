@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hover와stop</title>
+    <script src="//code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        .btn{
+            width: 100%;
+            display: block;
+            border: 10px solid green;
+            cursor: pointer;
+            font-size: 50px;
+        }
+        .box{
+            border: 10px solid black;
+            background-color: pink;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">반복</button>
+    <div class="box"></div>
+    <script>
+        $(function(){
+            $('.btn').hover(function(){
+                $('.box').stop().slideToggle();
+            });
+        });
+    </script>
+</body>
+</html>

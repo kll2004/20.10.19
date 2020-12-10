@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get</title>
+    <script src="//code.jquery.com/jquery-3.4.1.js"></script>
+    <style></style>
+</head>
+<body>
+    <div class="box">
+        <span>안녕하세요.</span>
+    </div>
+    <input type="text" class="input" value="123">
+    <br>
+    <input type="checkbox" id="check">
+    <script>
+        /*
+        - text() : 해당 요소 언애았는 문자열을 가져옴
+        - html() : 해당 요소 안에 있는 html 코드를 가져옴
+        - val() : 해당 요소 안에 있는 value값을 가져옴
+            - input태그나 select태그,  textarea태그에서 사용 가능
+            -------------------------------
+        */
+       var text = $('.box').text();
+       var html = $('.box').html();
+       var val = $('.box').val();
+       console.log('box text : ' + text);
+       console.log('box html : ' + html);
+       console.log('box val : ' + val);
+
+       text = $('.input').text();
+       html = $('.input').html();
+       val = $('.input').val();
+       console.log('input text : ' + text);
+       console.log('input html : ' + html);
+       console.log('input val : ' + val);
+
+       attrClass = $('#check').attr('checked');
+       attrClass = $('#check').prop('checked');
+       console.log('attr[checked] : ' + attrClass);
+       console.log('prop[checked] : ' + propClass);
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add</title>
+    <script src="//code.jquery.com/jquery-3.4.1.js"></script>
+    <style></style>
+</head>
+<body>
+    <ol>
+        <li>
+            <a href="#">
+                <img width="100" src="https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting.jpg" alt="">
+            </a>
+        </li>
+    </ol>
+    <button class="append-btn">추가(append)</button>
+    <button class="prepend-btn">추가(prepend)</button>
+    <button class="after-btn">추가(prepend)</button>
+    <button class="brfore-btn">추가(prepend)</button>
+    <script>
+        /**/
+        $(function(){
+            $('.append-btn').click(function(){
+            var str = '';
+            str +='<li>';
+            str +='<a href="#">';
+            str +='<img width="200" src="https://media.istockphoto.com/photos/white-chihuahua-portrait-picture-id1085439660?k=6&m=1085439660&s=170667a&w=0&h=zEI-IY7Px1UqKzM0jq1iXrHFgzu6EbvQle_qInndHsU=" alt="">';
+            str +='</a>';
+            str +='</li>';
+            $('ol').append(str);                   
+            })
+            $('.prepend-btn').click(function(){
+            var str = '';
+            str +='<li>';
+            str +='<a href="#">';
+            str +='<img width="200" src="https://lh3.googleusercontent.com/proxy/ShlVfT4O_3T2DF1ElXVJKO6QGFh3XRwsF8Jm48M22nd2EiYEpjEB_x1riZa-6VWr8EASSqkTXWDPc1oGmnG5KspEmF-_6Kmmum3pT6dsrz7BqD_9b_yRadUIoe2NMReTrFrVQ0aYw9rauY0NoeRFBT31gQyNVfKm" alt="">';
+            str +='</a>';
+            str +='</li>';
+            $('ol').prepend(str);                   
+            })
+            $('after-btn').click(function(){
+                var str = '<a href="//naver.com" target="_blank">네이버></a>'
+                $('ol').after(str);
+            })
+            $('before-btn').click(function(){
+                var str = '<a href="//daum.net" target="_blank">다음></a>'
+                $('ol').before(str);
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크기예제</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+            border: 2px solid red;
+            margin: 15px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="output"></div>
+    <script>
+        /*
+        ****
+        */
+        var str = '';
+        str += 'width : ' + $('.box').width() + '<br>';
+        str += 'height : ' + $('.box').height() + '<br>';
+        str += 'Inner width : ' + $('.box').innerWidth() + '<br>';
+        str += 'Inner height : ' + $('.box').innerHeight() + '<br>';
+        str += 'Outer width :  '+ $('.box').outerWidth() + '<br>';
+        str += 'Outer height : ' + $('.box').outerHeight() + '<br>';
+        $('.output').html(str);
+        $('.box').width(200).height(200);
+    </script>
+</body>
+</html>

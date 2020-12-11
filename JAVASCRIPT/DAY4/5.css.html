@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        .box{
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">노랑</div>
+    <div class="output"></div>
+    <script>
+        /*
+        *
+        *
+        */
+       var bgColor = $('.box').css('background-color');
+       var fSize = $('.box').css('font-size');
+       $('.output').html(bgColor+","+fSize);
+       $('.box').css('text-align','center');
+       $('.box').css({'font-weight':'bold','color':'red'});
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>remove</title>
+    <script src="//code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        .box{
+            background-color: yellow;
+            height: 100px;
+        }
+        .box1{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        <a href="#">네이버</a>
+        <div>안녕하세요</div>
+    </div>
+    <div class="box box2">
+        <a href="#">네이버</a>
+        <div>안녕하세요</div>
+    </div>
+    <button class="remove-btn">삭제(remove)</button>
+    <button class="empty-btn">삭제(empty)</button>
+    <script>
+        /**/
+        $(function(){
+            $('.remove-btn').click(function(){
+                $('.box1').remove();
+            })
+            $('.empty-btn').click(function(){
+                $('.box2').empty();
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class2</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        .box{
+            background-image: url(https://media.istockphoto.com/photos/white-chihuahua-portrait-picture-id1085439660?k=6&m=1085439660&s=170667a&w=0&h=zEI-IY7Px1UqKzM0jq1iXrHFgzu6EbvQle_qInndHsU=);
+            background-size: 500px 500px;
+            width: 500px;
+            height: 500px;
+        }
+        .change{
+            background-image: url(https://t1.daumcdn.net/cfile/blog/243216485324261E1D);
+        }
+    </style>
+</head>
+<body>
+    <button class="box"></button>
+    <script>
+        $(function(){
+            $('.box').hover(function(){
+                $('.box').toggleClass('change');
+            })
+        })
+    </script>
+</body>
+</html>

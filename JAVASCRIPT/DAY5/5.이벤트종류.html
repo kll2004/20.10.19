@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트종류</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+    <input type="text" class="change">
+    <input type="radio" name="gender" value="male">남성
+    <input type="radio" name="gender" value="female">여성
+    <script>
+        /*
+        click : 마우스 클릭
+        change : 
+        */
+        $(function(){
+            $('.change').change(function(){
+                var val = $(this).val();
+                console.log(val);
+            })
+            $('input[name = gender]').change(function(){
+                var val = $(this).val();
+                console.log(val);
+            })
+            $('input[type=text]').focus(function(){
+                $(this).css('background-color','yellow');
+            })
+            $('input[type=text]').focusin(function(){
+                $(this).css('color','red');
+            })
+            $('input[type=text]').focusout(function(){
+                $(this).css('color','black');
+            })
+            $('input[type=text]').blur(function(){
+                $(this).css('background-color','white');
+            })
+            $('input[type=text]').keydown(function(e){
+                console.log('keydown : ' + $(this).val());
+            })
+            $('input[type=text]').keypress(function(e){
+                console.log('keypress : ' + $(this).val());
+            })
+            $('input[type=text]').keyup(function(){
+                console.log('keyup : ' + $(this).val());
+            })
+        })
+    </script>
+</body>
+</html>

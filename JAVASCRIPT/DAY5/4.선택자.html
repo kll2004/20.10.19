@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+    <script src="../js/jquery.js"></script>
+    <style></style>
+</head>
+<body>
+    <div class="box">hihhihiihihi</div>
+    <div class="box2">
+        과일목록
+        <ul>
+            <li>사과</li>
+            <li>배</li>
+            <li>포도</li>
+            <li>귤</li>
+            <li>딸기</li>          
+        </ul>
+    </div>
+    <div class="box3">
+        <a href="//www.naver.com" title="naver Link">네이버</a> <br>
+        <a href="//www.google.com" title="google Link">구글</a> <br>
+        <a href="//www.daum.net" title="daum Link">다음</a> <br>
+        <a href="#naver" title="naver btn">네이버</a> <br>
+        <a href="#google" title="googl ebtn">구글</a> <br>
+        <a href="#daum" title="daum btn">다음</a> <br>
+    </div>
+    <p title="Tomorrow">this is paragraph</p>
+    <p title="">this is paragraph</p>
+    <p title="">this is paragraph</p>
+    <p title="">this is paragraph</p>
+    <p title="">this is paragraph</p>
+    <p title="">this is paragraph</p>
+    <script>
+        $(function(){
+            $('*').css('font-size','20px')
+            $('li:first').css('color','red');
+            $('li:last').css('color','blue');
+            /**/
+            $('li:even').css('font-weight','bold');
+            $('li:odd').css('text-decoration','underline');
+            $('li:eq(0)').css('border','1px solid black');
+            /**/
+            $('li:lt(2)').css('background-color','rgb(255,255,0)');
+            $('li:gt(2)').css('background-color','skyblue');
+            /**/
+            $('.box:animated');
+            /**/
+            var isAnimated = $('.box').is(':animated');
+            console.log(isAnimated);
+            /**/
+            $(':root').css('font-style','italic')
+            /**/
+            $('[href]').css({'color':'red','text-decorayion':'none'});
+            $('[href$=".com"]').css('text-decoration','underline');
+            $('a[href|="#google"]').css('background-color ','yellow');
+            $("p[title|='Tomorrow']").css("background-color","yellow");
+            $('p[title^=Tomorrow').css('border','1px solid red');
+            $('p[title~=rrow').css('color','blue');
+            $('p[title*=Tomorrow').css('color','green');
+            $('p[title*=rrow').css('font-weight','bold');
+        })
+    </script>
+</body>
+</html>

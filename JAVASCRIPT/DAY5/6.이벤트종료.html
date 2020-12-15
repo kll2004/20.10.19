@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트종류</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        body{
+            height: 2000px;
+        }
+        div{
+            padding: 20px;
+        }
+        .box{
+            background-color: yellow;
+            position: relative;
+        }
+        .sub-box{
+            background-color: green;
+        }
+        .box-in{
+            background-color: skyblue;
+            height: 60px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        mouse enter/leave
+        <div class="sub-box">
+            <div class="box-in">
+                <span class="text"></span>
+            </div>
+        </div>
+        <span class="text"></span>
+    </div>
+    <div class="box box2">
+        mouse over/out
+        <div class="sub-box">
+            <div class="box-in">
+                <span class="text"></span>
+            </div>
+        </div>
+        <span class="text"></span>
+    </div>
+    <script>
+        /**/
+        var i = 0;
+        var j = 0;
+    $(function(){
+        $('.box1').mouseenter(function(){
+            $(this).find('.text').text(++i);
+        }).mouseleave(function(){
+
+        })
+        $('.box2').mouseover(function(){
+            $(this).children('.text').text(++j);
+        }).mouseout(function(){
+
+        })
+        $('body').mousedown(function(){
+            console.log('mousedown');
+        })
+        $('body').mouseup(function(){
+            console.log('mouseup');
+        })
+        var k = 0;
+        $(window).resize(function(){
+            console.log("화면 크기 변경 횟수 : " + ++k);
+        })
+        $(window).scroll(function(){
+            console.log("화면 크기 변경 횟수 : " + ++k);
+        })
+        var cnt = 0;
+        $(window).scroll(function(){
+            console.log("화면 크기 변경 횟수 : " + ++cnt);
+        })
+    })
+    </script>
+</body>
+</html>

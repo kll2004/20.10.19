@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tesr2</title>
+    <script src="../js/jquery.js"></script>
+    <style></style>
+</head>
+<body>
+    <button class="box">추가</button>
+    <div class="box2"></div>
+    <script>
+        $(function(){
+            $('.box').click(function(){
+                var str = '<input tye = "text" /><br>';
+                $('.box2').append(str);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animate</title>
+    <script src="../js/jquery.js"></script>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        .head{
+            margin-top: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button class="jello-btn">jello</button>
+	<button class="backInDown-btn">backInDown</button>
+    <h1 class="head animate__animated animate__bounce">hellow</h1>
+    <script>
+        $(function(){     
+            $('.head').hover(function(){
+                $('.head').toggleClass('animate__infinite')
+            })
+            $('.jello-btn').click(function(){
+                $('.head').attr('class','head animate__animated animate__jello');
+            })
+            $('.backInDown-btn').click(function(){
+                $('.head').attr('class','head animate__animated animate__backInDown-btn');
+            })
+            $('.head').on('animationend',function(){
+                $('.head').attr('class','head');
+            })
+        })
+    </script>
+</body>
+</html>

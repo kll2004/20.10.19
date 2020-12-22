@@ -3,26 +3,79 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>네이버</title>
-    <link rel="stylesheet" href="css/naver.css">
-    <script src="../js/jquery.js"></script>
+	<title>네이버</title>
+	<link rel="stylesheet" href="css/naver.css">
+	<script src="../js/jquery.js"></script>
 	<script src="https://kit.fontawesome.com/b1e3c8f87d.js" 
-        crossorigin="anonymous"></script>
-        <script>
-            $(function(){
-                /**/
-                $('.search-box .auto-btn').click(function(e){
-                    /*
-                    *
-                    *
-                    * 
-                    * */
-                    e.preventDefault();
-                    // $('.search-box .auto-btn .auto-ico').toggleClass('reverse-auto-ico');
-                    $(this).toggleClass('rev');
-                });
-            });
-        </script>
+		crossorigin="anonymous"></script>
+	<script>
+		$(function(){
+			//검색창에서 자동완성버튼을 클릭
+			$('.search-box .auto-btn').click(function(e){
+				//이벤트 function부분에 매개변수로 e를 추가하면 이벤트 정보가
+				//e에 담겨옴
+				//태그마다 기본 실행하는 동작이 있는데 해당 동작을 막아주는 역할
+				e.preventDefault();
+				//$('.search-box .auto-btn .auto-ico').toggleClass('reverse-auto-ico');
+				$(this).toggleClass('rev');
+				$('.header .auto-box').toggle();
+			});
+			//.shop-list-body에 있는 >버튼을 클릭
+			$('.shop-list-body .next-btn').click(function(e){
+				e.preventDefault();
+				var currentPage = 
+					$(this).parents('.c-box').find('.current').text();
+				currentPage = getPage(++currentPage,1,19);
+				$('.shop-list-body .current').text(currentPage);
+			})
+			//.shop-list-body에 있는 <버튼을 클릭
+			$('.shop-list-body .prev-btn').click(function(e){
+				e.preventDefault();
+				var currentPage = 
+					$(this).parents('.c-box').find('.current').text();
+				currentPage = getPage(--currentPage,1,19);
+				$('.shop-list-body .current').text(currentPage);
+			})
+			//shop-list-middle 에 있는 <버튼을 클릭하거나 shop-list-footer에 있는 <버튼을 클릭
+			$('.shop-list-middle .prev-btn,.shop-list-footer .prev-btn').click(function(e){
+				e.preventDefault();
+				var currentPage = 
+					$(this).parent().siblings('.num-box').find('.current').text();
+				currentPage = getPage(--currentPage,1,4);
+				$(this).parent().siblings('.num-box').find('.current')
+					.text(currentPage);
+			})
+			//shop-list-middle 에 있는 >버튼을 클릭하거나 shop-list-footer에 있는 >버튼을 클릭
+			$('.shop-list-middle .next-btn,.shop-list-footer .next-btn').click(function(e){
+				e.preventDefault();
+				var currentPage = 
+					$(this).parent().siblings('.num-box').find('.current').text();
+				currentPage = getPage(++currentPage,1,4);
+				$(this).parent().siblings('.num-box').find('.current')
+					.text(currentPage);
+			})
+			/**/
+			$('.more-btn').click(function(){
+				$('.menu-service-box').toggle();
+				if(!$(this).hasClass('fold')){
+					$(this).text('접기');
+				}else{
+					$(this).text('더보기');
+				}
+				$(this).toggleClass('fold');
+			})
+		});
+		function getPage(page,min,max){
+			if(page < min)	return max;
+			if(page > max)	return min;
+			return page;
+		}
+		$(function(){
+			$('ico').click(function(){
+
+			})
+		})
+	</script>
 </head>
 <body>
 	<div class="header">
@@ -36,12 +89,21 @@
 						<i class="kbd-ico"></i>
 					</a>
 					<a href="#" class="auto-btn">
-                        <i class="auto-ico"></i>
+						<i class="auto-ico"></i>
 					</a>
 				</div>
 				<button class="search-btn">
 					<span class="search-ico"></span>
 				</button>
+				<div class="auto-box">
+					<div class="left-box">
+						<a href="#" class="help">도움말</a>
+						<a href="#" class="report">신고</a>
+					</div>
+					<div class="right-box">
+						<a href="#" class="close-auto-btn">자동완성 끄기</a>
+					</div>
+				</div>
 			</form>
 			<div class="service-box">
 				<a href="#" class="set-home-btn">네이버를 시작페이지로</a>
@@ -119,6 +181,20 @@
 					<i class="error-ico"></i>
 					<span>검색어 필터 설정이 필요합니다</span>
 				</a>
+			</div>
+		</div>
+		<div class="menu-service-box">
+			<div class="box0">
+				<div class="box0-1">ㄱ-ㅁ
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+					<div class="box0-1-1">s날씨</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -783,7 +859,7 @@
 							</div>
 							<div class="shop-list-body after">
 								<div class="list-header-box">
-									<div class="list-control-box">
+									<div class="list-control-box c-box">
 										<div class="num-box">
 											<span class="current">1</span>/19
 										</div>
@@ -929,7 +1005,7 @@
 										</li>
 									</ul>
 								</div>
-								<div class="list-footer-box">
+								<div class="list-footer-box c-box">
 									<a href="#"class="prev-btn"></a>
 									<div class="num-box">
 										<span class="current">1</span>/19

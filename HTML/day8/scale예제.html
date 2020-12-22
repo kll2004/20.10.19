@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 241px;
+            height: 292px;
+            overflow: hidden;
+        }
+        img:hover{
+            transform: scale(1.02);
+        }
+        img{
+            transition: transform 0.3s;
+        }
+        .box2{
+            height: 500px;
+            width: 500px;
+            background-color: yellow;
+            border: 5px solid black;
+        }
+        .box2 .box3{
+            height: 480px;
+            width: 240px;
+            background-color: red;
+            margin: 10px 0 10px 10px;
+            float: left;
+        }
+        .box2 .box4{
+            height: 480px;
+            width: 240px;
+            background-color: blue;
+            margin: 10px 10px 10px 0;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="https://s.pstatic.net/shopping.phinf/20201130_18/b45fdef9-17c6-4cc2-8842-2bd193d05480.jpg" alt="">
+    </div>
+    <div class="box2">
+        <div class="box3"></div>
+        <div class="box4"></div>
+    </div>
+</body>
+</html>

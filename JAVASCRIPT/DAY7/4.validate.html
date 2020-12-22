@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validate</title>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.validate.js"></script>
+    <script src="../js/additional-methods.js"></script>
+    <style>
+    .container{
+        box-sizing: border-box;
+        min-width: 220px;
+        margin: 0 15px;
+    }
+    .contain{
+        width: auto;
+        max-width: 460px;
+    }
+    .id{
+        background-color: #fff;
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 51px;
+        border: solid 1px #dadada;
+        padding: 10px 110px 10px 14px;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+    .naver{
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 29px;
+        padding-right: 25px;
+        line-height: 29px;
+        border: none;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+    .com{
+        position: absolute;
+        top: 16px;
+        right: 13px;
+        font-size: 15px;
+        line-height: 18px;
+        color: #8e8e8e;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contain">
+            <div class="id-btn">아이디</div>
+            <div class="id"><input type="text" name="id" placeholder="아이디"><br>
+                <div class="naver"></div>
+                <div class="com">@naver.com</div>
+            </div>
+            <label id="id-error" class="error" for="id"></label><br>
+        
+            <div class="pw-btn">비번</div>
+            <input class="pw" type="password" name="pw" placeholder="비번" id="pw"><br>
+        
+            <div class="pw2-btn">비번 재확인</div>
+            <input class="pw2" type="password" name="pw2" placeholder="비번확인"><br>
+        
+            <div class="age-btn">나이</div>
+            <input class="pw2" type="text" name="age" placeholder="나이"><br>
+        
+            <div class="btn"></div>
+            <input class="age" type="text" name="name" placeholder="이름"><br>
+        
+            <div class="btn"></div>
+            <input class="amail" type="text" name="email" placeholder="이메일"><br>
+        
+            <div class="btn"></div>
+            <input class="url" type="text" name="home" placeholder="홈페이지"><br>
+        
+            <form action="" id="form">
+                <button type="submit">회원가입</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('#form').validate({
+                rules : {
+                    id : {
+                        required : true,
+                        minlength : 8
+                    },
+                    pw : {
+                        required : true,
+                        regex: /^[a-zA-Z0-9]{8,13}$/
+                    },
+                    pw2 : {
+                        equalTo : pw
+                    },
+                    age : {
+                        digits : true
+                    },
+                    email : {
+                        email : true
+                    },
+                    home : {
+                        url : true
+                    }
+                },
+                messages : {
+                    id : {
+                        required : '필수입력.',
+                        minlength : '최소{0}글자 이상.'
+                    },
+                    pw : {
+                        required : '필수입력.',
+                        regex: '비밀번호는 영문자,숫자로 이루어지고 8이상13자리 이하.'
+                    },
+                    pw2 : {
+                        equalTo : '비밀번호 불일치.'
+                    },
+                    age : {
+                        digits : '나이는 숫자만 입력가능.'
+                    },
+                    email : {
+                        email : '이메일 형식 불일치'
+                    },
+                    home : {
+                        url : '홈페이지 형식 불일치'
+                    }
+                }
+            })
+            $.validator.addMethod('regex',function(value, elemnt, regexp){
+                var re = new RegExp(regexp);
+                return this.optional(elemnt) || re.test(value);
+            })
+        })
+    </script>
+</body>
+</html>

@@ -13,7 +13,11 @@
         <button class="btn-next">이후</button>
     </div>
     <script>
-        /**/
+        /*
+		- 이전 버튼을 클릭하면 버튼이 감소, 1에서 감소를 누르면 6
+		- 이후 버튼을 클릭하면 버튼이 증가, 6에서 증가를 누르면 1
+		- 해당 숫자가 화면에 바뀌도록 작성
+		*/
         $(function(){
             $('.btn-next').click(function(){
                 var currentpage = $('.current-page').text();

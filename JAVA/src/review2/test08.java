@@ -1,26 +1,34 @@
 package review2;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class test08 {
 
 	public static void main(String[] args) {
-		/*정수 n을 입력 받고 입력받은 수만큼 단어와 뜻을 입려받아 저장하고 출력하는 코드를 작성하세요.*/
+		/* - 정수 n을 입력 받고 입력받은 수만큼 단어와 뜻을 입력받아 저장하고 출력하는 코드를 작성하세요.
+		 * */
+		HashMap<String, String> map 
+			= new HashMap<String, String>();
 		Scanner scan = new Scanner(System.in);
-		ArrayList<String> list = new ArrayList<String>();		
-		System.out.print("정수입력 : ");
-		int num = scan.nextInt();
-		while(list.size()<num) {
+		System.out.print("입력할 단어의 갯수 : ");
+		int size = scan.nextInt();
+		
+		while(map.size() < size) {
 			System.out.print("단어 : ");
-			String str = scan.next();
-			list.add(str);
-			System.out.print("뜻 : ");
-			String str2 = scan.next();
-			list.add(str2);
+			String word = scan.next();
+			System.out.print("의미 : ");
+			String mean = scan.next();
+			map.put(word, mean);
 		}
-		for(String tmp : list) {
-			System.out.println(tmp);
+		Iterator<String> it = map.keySet().iterator();
+		while(it.hasNext()) {
+			String word = it.next();
+			String mean = map.get(word);
+			System.out.println("단어 : " + word + ", 뜻 : " + mean);
 		}
+		scan.close();
 	}
+
 }

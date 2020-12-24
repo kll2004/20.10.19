@@ -2,7 +2,7 @@ package Day12;
 
 import java.util.Scanner;
 
-import DAY4.continue문;
+import DAY04.continue문;
 
 public class String메소드2 {
 

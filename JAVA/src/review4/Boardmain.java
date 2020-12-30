@@ -22,6 +22,10 @@ public class Boardmain {
 			printMenu();
 			//메뉴 선택(입력)
 			menu = scan.nextInt();
+<<<<<<< HEAD
+=======
+			
+>>>>>>> main
 			String title, contents, writer;
 			Board tmpBoard;
 			int num;

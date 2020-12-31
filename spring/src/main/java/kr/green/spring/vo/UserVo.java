@@ -1,6 +1,6 @@
 package kr.green.spring.vo;
 
-public class Uservo {
+public class UserVo {
 	private String id;
 	private String pw;
 	private String pw2;

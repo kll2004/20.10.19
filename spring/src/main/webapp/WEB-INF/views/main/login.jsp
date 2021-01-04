@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post">
+	<form method="post" action="/spring/login">
 		<input type="text" name="id"> <br>
 		<input type="password" name="pw"> <br>
 		<button type="submit">Àü¼Û</button>

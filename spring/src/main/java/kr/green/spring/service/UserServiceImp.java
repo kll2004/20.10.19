@@ -3,6 +3,7 @@ package kr.green.spring.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.green.spring.dao.UserDao;
@@ -13,6 +14,9 @@ public class UserServiceImp implements UserService{
 
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public String getEmail(String id) {
@@ -40,18 +44,18 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public boolean isUser(String id, String pw) {
+	public UserVo isUser(String id, String pw) {
 		//Dao에게 id를 전달하여 회원 정보를 요청
 		UserVo user = userDao.getUser(id);
 		//DB에서 가져온 회원 정보의 비밀번호(user.getPw())와 입력받은 비밀번호(pw)를 비교하여
 		//같은면 true, 다르면 false를 반환
 		//입력한 id와 일치하는 회원 정보가 없는 경우
 		if(user == null)
-			return false;
-		if(user.getPw().equals(pw)) {
-			return true;
+			return null;
+		if(passwordEncoder.matches(pw, user.getPw())) {
+			return user;
 		}else {
-			return false;
+			return null;
 		}
 	}
 
@@ -75,6 +79,13 @@ public class UserServiceImp implements UserService{
 		if(user.getPw() == null || user.getPw().length() == 0) {
 			return false;
 		}
+		//비밀번호 암호화
+		//입력받은 비밀번호
+		String pw = user.getPw();
+		//입력받은 비밀버호 암호화
+		String encodePw = passwordEncoder.encode(pw);
+		//회원 비밀번호를 암호화된 비밀번호로 수정
+		user.setPw(encodePw);
 		//회원가입 => user테이블에 회원정보를 추가(insert)
 		userDao.insertUser(user);
 		return true;

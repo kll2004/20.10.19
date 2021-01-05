@@ -16,7 +16,7 @@ public interface UserService {
 
 	ArrayList<UserVo> getAllUser();
 
-	boolean isUser(String id, String pw);
+	UserVo isUser(String id, String pw);
 
 	boolean signup(UserVo user);
 

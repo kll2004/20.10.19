@@ -65,8 +65,14 @@ public class HomeController {
 		
 		boolean signup = userService.signup(user);
 		System.out.println(signup);
-		mv.setViewName("/main/signup");
+		if(signup) {
+			//loaclhost:8080/test/
+			mv.setViewName("redirect:/");
+			//loaclhost:8080/test/signup
+			//mv.setViewName("/main/home");
+		}else {
+			mv.setViewName("redirect:/signup");
+		}
 		return mv;
-	}
-	
+	}	
 }

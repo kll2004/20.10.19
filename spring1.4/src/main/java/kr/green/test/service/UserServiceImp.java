@@ -41,10 +41,16 @@ public class UserServiceImp implements UserService{
 		}
 		return false;//비밀번호가 달라서 회원 아님
 	}
-
 	@Override
 	public boolean signup(UserVo user) {
-		// TODO Auto-generated method stub
-		return false;
+		UserVo tmp = userDao.getUser(user.getId());
+		//이미 가입된 회원이면 회원가입 진행 불가
+		if(tmp != null) {
+			return false;
+		}
+		//가입된 회원이 아니면 회원 가입을 진행
+		userDao.insertUser(user);
+		return true;
 	}
+	
 }

@@ -25,7 +25,7 @@
     </style>
 </head>
 <body>
-    <form action="/test/signup" id="form" class="container"method="post">
+    <form action="<%=request.getContextPath()%>.signup"/signup" id="form" class="container"method="post">
         <h1 class="title">회원가입</h1>
         <div class="form-group">
             <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="${user.id}">

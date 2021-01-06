@@ -23,7 +23,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		//modelMap.get("user")를 통해 해당 데이터를 가져올 수 있음
 	    ModelMap modelMap = modelAndView.getModelMap();
 	    UserVo user = (UserVo)modelMap.get("user");
-	    
 	    //user에 정보가 있으면 해당 정보를 세션에 저장
 	    if(user != null) {
 	        HttpSession session = request.getSession();

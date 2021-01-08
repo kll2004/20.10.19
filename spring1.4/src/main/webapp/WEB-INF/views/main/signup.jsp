@@ -25,7 +25,7 @@
     </style>
 </head>
 <body>
-    <form action="<%=request.getContextPath()%>.signup"/signup" id="form" class="container"method="post">
+    <form action="<%=request.getContextPath()%>/signup" id="form" class="container"method="post">
         <h1 class="title">회원가입</h1>
         <div class="form-group">
             <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="${user.id}">
@@ -36,7 +36,7 @@
             <label for="pw" class="error" id="pw-error"></label>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="pw2" name="pw2" placeholder="비밀번호확인" value="${user.pw2}">
+            <input type="text" class="form-control" id="pw2" name="pw2" placeholder="비밀번호확인" value="">
             <label for="pw2" class="error" id="pw-error2"></label>
         </div>
         <div class="form-group">

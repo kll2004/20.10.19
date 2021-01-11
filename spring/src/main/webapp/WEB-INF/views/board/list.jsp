@@ -9,7 +9,21 @@
 </head>
 <body>
 	<div class="container">
-  <h2>Table Head Colors</h2>
+	
+	<form class="input-group mb-3">
+	    <div class="input-group-append">
+	    <select class ="form-control" name="type">
+	    	<option value="1">전체</option>
+	    	<option value="2">제목</option>
+	    	<option value="3">내용</option>
+	    	<option value="4">작성자</option>
+	    </select>
+	     </div>
+	     <input type="text" class="form-control" name="Search" placeholder>
+	     <div class="input-group-append">
+	      <button class="btn btn-success" type="submit">Go</button>  
+	     </div>
+	  </form>
   <table class="table">
     <thead class="thead-dark">
       <tr>

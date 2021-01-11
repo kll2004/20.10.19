@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div class="container">
+	<c:if test="${board != null && board.writer == user.id }">
 	  <form action="<%=request.getContextPath()%>/board/modify" method ="post">
 	    <div class="form-group">
 	      <label>번호</label>
@@ -32,6 +33,10 @@
 	    </div>
     		<button type="submit" class="btn btn-primary">수정</button>
 	  </form>
+	  </c:if>
+	  <c:if test="${board == null || board.writer != user.id }">
+	  	<h1>존재안하는 게시글이나 작성자가 아님</h1>
+	  </c:if>
 	</div>
 	<a href="<%=request.getContextPath()%>/board/list">
 		<button type="button" class="btn btn-primary">목록</button>

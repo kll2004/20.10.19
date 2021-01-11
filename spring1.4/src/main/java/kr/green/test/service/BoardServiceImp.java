@@ -52,4 +52,20 @@ public class BoardServiceImp implements BoardService{
 		oriBoard.setContent(board.getContent());
 		boardDao.updateBoard(oriBoard);
 	}
+
+	@Override
+	public void deleteBoard(Integer num, UserVo user) {
+		if(num == null) {
+			return;
+		}
+		BoardVo board = boardDao.getBoard(num);
+		if(board == null) {
+			return;
+		}
+		if(!board.getWriter().equals(user.getId())){
+			return;
+		}
+		board.setIsdel("Y");
+		boardDao.updateBoard(board);
+	}
 }

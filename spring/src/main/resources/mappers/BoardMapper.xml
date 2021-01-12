@@ -14,7 +14,7 @@
 		 and title like concat('%', #{cri.search} , '%')
 		</if>
 		<if test="cri.type == 3">
-		 and cotent like concat('%', #{cri.search} , '%')
+		 and content like concat('%', #{cri.search} , '%')
 		</if>
 		<if test="cri.type == 4">
 		 and writer like concat('%', #{cri.search} , '%')
@@ -25,7 +25,7 @@
 	<select id="getBoard" resultType="kr.green.spring.vo.BoardVo">
 		select * from board where num = #{num} and isDel = 'N'
 	</select>
-	<insert id="insertBoard" parameterType="kr.green.spring.vo.BoardVo">
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.num" parameterType="kr.green.spring.vo.BoardVo">
 	insert into
 		board(title, writer, content)
 		value(#{board.title},#{board.writer},#{board.content})
@@ -43,5 +43,26 @@
 	</update>
 	<select id="getTotalCount" resultType="int">
 		select count(*) from board where isDel = "N"
+		<if test="cri.type == 1">
+			 and (title like concat('%', #{cri.search} , '%')
+			 or	content like concat('%', #{cri.search} , '%')
+			 or writer like concat('%', #{cri.search} , '%'))
+		</if>
+		<if test="cri.type == 2">
+		 	and title like concat('%', #{cri.search} , '%')
+		</if>
+		<if test="cri.type == 3">
+		 	and content like concat('%', #{cri.search} , '%')
+		</if>
+		<if test="cri.type == 4">
+		 	and writer like concat('%', #{cri.search} , '%')
+		</if>
+	</select>
+	<insert id="insertFile">
+		insert into files(boardNum, oriFilename, filename)
+			values(#{num}, #{oriFilename}, #{filename})
+	</insert>
+	<select id="getFileList" resultType="kr.green.spring.vo.FileVo">
+		select * from files where boardNum = #{num}
 	</select>
 </mapper>

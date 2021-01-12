@@ -35,11 +35,21 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" id="content" name="content" readonly>${board.content}</textarea>
 		</div>
+		
+		<c:if test="${fList.size() !=0 }">
+			<div class="form-group">
+				<label for="content">첨부파일</label>
+				<c:forEach items="${fList}" var="file">
+					<div><a href="<%=request.getContextPath()%>/board/download?fileName=${file.filename}">${file.oriFilename}</a></div>
+				</c:forEach>
+			</div>
+		</c:if>
+		
 		</c:if>
 		<c:if test="${board == null}">
 			<h1>존재하지 않은 게시물입니다.</h1>
 		</c:if>
-		<a href="<%=request.getContextPath()%>/board/list">
+		<a href="<%=request.getContextPath()%>/board/list?page{cri.page}&search=${cri.search}&type${cri.type}">
 			<button type="button" class="btn btn-outline-info">목록</button>
 		</a>
 		<a href="<%=request.getContextPath()%>/board/register">

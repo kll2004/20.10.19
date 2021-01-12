@@ -23,10 +23,20 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" id="content" name="content"></textarea>
 		</div>
+		
 		<div class="form-group">
 	        <label>파일</label>
-	        <input type="file" class="form-control" name="file"/>
+	        <input type="file" class="form-control" name="fileList"/>
 	    </div>
+	    <div class="form-group">
+	        <label>파일</label>
+	        <input type="file" class="form-control" name="fileList"/>
+	    </div>
+	    <div class="form-group">
+	        <label>파일</label>
+	        <input type="file" class="form-control" name="fileList"/>
+	    </div>
+	    
 		<button type="submit" class="btn btn-outline-info">등록</button>
 	</form>
 		<a href="<%=request.getContextPath()%>/board/list">

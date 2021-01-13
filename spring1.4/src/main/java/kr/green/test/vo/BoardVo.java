@@ -11,6 +11,7 @@ public class BoardVo {
 	private String writer;
 	private String isDel;
 	private Date registerDate;
+	private int views;
 	public int getNum() {
 		return num;
 	}
@@ -40,7 +41,17 @@ public class BoardVo {
 	}
 	public void setIsdel(String isdel) {
 		this.isDel = isdel;
+	}	
+	public int getViews() {
+		return views;
 	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+	public void setIsDel(String isDel) {
+		this.isDel = isDel;
+	}
+	
 	public String getRegisterDate() {
 		SimpleDateFormat simpleFormat 
 			= new SimpleDateFormat("yyyy-MM-dd");
@@ -56,9 +67,10 @@ public class BoardVo {
 		Date date2 = simpleFormat2.parse(registerDate);
 		this.registerDate = date2;
 	}
+	
 	@Override
 	public String toString() {
-		return "[num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", isdel="
-				+ isDel + ", registerDate=" + registerDate + "]";
+		return "BoardVo [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", isDel="
+				+ isDel + ", registerDate=" + registerDate + ", views=" + views + "]";
 	}
 }

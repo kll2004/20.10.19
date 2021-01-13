@@ -26,16 +26,17 @@ public class BoardController {
 	public ModelAndView boardlistget(ModelAndView mv, HttpServletRequest request) {
 		ArrayList<BoardVo> list = boardService.getBoardList();
 		UserVo user = userService.getUser(request);
-		System.out.println("/board/list : " + user);
 		mv.addObject("list",list);
 		mv.setViewName("/board/list");
 		return mv;
 	}
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
 	public ModelAndView boardDetailGet(ModelAndView mv, Integer num) {
-		System.out.println("화면에서 받은 번호 : " + num);
+		
+		boardService.views(num);
+		
 		BoardVo board = boardService.getBoard(num);
-		System.out.println("검색된 게시글 : " + board);
+		
 		mv.addObject("board",board);
 		mv.setViewName("/board/detail");
 		return mv;
@@ -67,9 +68,7 @@ public class BoardController {
 	}
 	@RequestMapping(value = "/board/delete", method = RequestMethod.GET)
 	public ModelAndView boarddeleteget(ModelAndView mv,  Integer num, HttpServletRequest request) {
-		System.out.println("/board/delete : num = "+num);
 		UserVo user = userService.getUser(request);
-		System.out.println("/board/delete : num = "+num);
 		boardService.deleteBoard(num, user);
 		mv.setViewName("redirect:/board/list");
 		return mv;

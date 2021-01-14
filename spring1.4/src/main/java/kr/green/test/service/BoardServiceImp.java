@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.green.test.pagination.Criteria;
 import kr.green.test.dao.BoardDao;
 import kr.green.test.vo.BoardVo;
 import kr.green.test.vo.UserVo;
@@ -17,8 +18,9 @@ public class BoardServiceImp implements BoardService{
 	BoardDao boardDao;
 
 	@Override
-	public ArrayList<BoardVo> getBoardList() {
-		return boardDao.getBoardList();
+	public ArrayList<BoardVo> getBoardList(Criteria cri) {
+		//(수정)Dao getBoardList()를 getBoardList(cri)로 수정
+		return boardDao.getBoardList(cri);
 	}
 
 	@Override
@@ -74,5 +76,15 @@ public class BoardServiceImp implements BoardService{
 		if(num == null)
 			return;
 		boardDao.updateViews(num);
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) {
+		//페이지네이션 기능 : 다오에게 전체 게시글 수를 요청
+		//return boardDao.getTotalCount();
+		
+		//페이지네이션 + 검색기능 : Dao에게 전체 게시글이 아닌 현재 페이지 정보
+		//(검색타입, 검색어 포함)에 맞는 게시글을 가져오라고 요청하도록 수정
+		return boardDao.getTotalCount(cri);
 	}
 }

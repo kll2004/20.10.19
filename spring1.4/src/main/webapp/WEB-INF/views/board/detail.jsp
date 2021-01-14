@@ -38,7 +38,7 @@
 	  </form>
 	  </c:if>
 	</div>
-	<a href="<%=request.getContextPath()%>/board/list">
+	<a href="<%=request.getContextPath()%>/board/list?page=${cri.page}&type=${cri.type}&search=${cri.search}">
 		<button type="button" class="btn btn-primary">¸ñ·Ï</button>
 	</a>
 	<a href="<%=request.getContextPath()%>/board/register">

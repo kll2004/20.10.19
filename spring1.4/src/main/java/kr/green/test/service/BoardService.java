@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import kr.green.test.pagination.Criteria;
 import kr.green.test.vo.BoardVo;
+import kr.green.test.vo.FileVo;
 import kr.green.test.vo.UserVo;
 
 public interface BoardService {
@@ -25,5 +26,9 @@ public interface BoardService {
 	void views(Integer num);
 
 	int getTotalCount(Criteria cri);
+
+	void registerFile(int num, String originalFilename, String path);
+
+	ArrayList<FileVo> getFileList(Integer num);
 	
 }

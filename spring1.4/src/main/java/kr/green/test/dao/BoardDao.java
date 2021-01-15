@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.green.test.pagination.Criteria;
 import kr.green.test.vo.BoardVo;
+import kr.green.test.vo.FileVo;
 
 public interface BoardDao {
 
@@ -20,4 +21,8 @@ public interface BoardDao {
 	void updateViews(@Param("num")Integer num);
 
 	int getTotalCount(@Param("cri")Criteria cri);
+
+	void insertFile(@Param("num")int num, @Param("filename")String originalFilename, @Param("path")String path);
+
+	ArrayList<FileVo> getFileList(@Param("num")Integer num);
 }

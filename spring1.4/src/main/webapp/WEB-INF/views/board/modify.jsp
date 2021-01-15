@@ -42,7 +42,7 @@
 	  	<h1>존재안하는 게시글이나 작성자가 아님</h1>
 	  </c:if>
 	</div>
-	<a href="<%=request.getContextPath()%>/board/list">
+	<a href="<%=request.getContextPath()%>/boa.rd/list">
 		<button type="button" class="btn btn-primary">목록</button>
 	</a>
 	<a href="<%=request.getContextPath()%>/board/register">

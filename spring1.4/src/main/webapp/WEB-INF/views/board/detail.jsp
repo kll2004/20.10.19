@@ -35,6 +35,14 @@
 	      <label>내용</label>
 	      <textarea rows="10" class="form-control"name="content" readonly>${board.content}</textarea>
 	    </div>
+    	<c:if test="${fLile.size() !=0}">
+		  	<div class="form-group">
+			<label>첨부파일</label>
+			<c:forEach items="${fLile}" var="file">
+			<div><a href="<%=request.getContextPath()%>/board/download?fileName=${file.filename}">${file.oriFilename}</a></div>
+			</c:forEach>
+			</div>
+		</c:if>
 	  </form>
 	  </c:if>
 	</div>
@@ -51,9 +59,6 @@
 		<a href="<%=request.getContextPath()%>/board/delete?num=${board.num}">
 			<button type="button" class="btn btn-primary">삭제</button>
 		</a>
-	</c:if>
-	<c:if test="${board == null}">
-		<h1>없는 게시글</h1>
 	</c:if>
 </body>
 </html>

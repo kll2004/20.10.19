@@ -20,13 +20,13 @@
 			<if test="cri.type == 4">
 				and writer like concat('%',#{cri.search},'%')
 			</if>
-		order by num desc
-		limit #{cri.pageStart}, #{cri.perPageNum}
+				order by num desc
+				limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="getBoard" resultType="kr.green.test.vo.BoardVo">
 		select * from board where num = #{num} and isDel = 'N'
 	</select>
-	<insert id = "insertBoard" parameterType="kr.green.test.vo.BoardVo">
+	<insert id = "insertBoard" useGeneratedKeys ="true" keyProperty = "board.num" parameterType="kr.green.test.vo.BoardVo">
 		insert into
 			board(title, writer,content)
 			values(#{board.title},#{board.writer},#{board.content})
@@ -58,5 +58,11 @@
 			and writer like concat('%',#{cri.search},'%')
 		</if>
 	</select>
-	
-</mapper>
+	<insert id="insertFile">
+		insert into files(boardNum, oriFilename,  filename)
+			value(#{num},#{filename},#{path})
+	</insert>
+	<select id="getFileList" resultType="kr.green.test.vo.FileVo">
+		select * from files where boardNum = #{num} and isDel = 'N'
+	</select>
+	</mapper>

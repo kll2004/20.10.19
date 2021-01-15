@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.green.test.pagination.Criteria;
 import kr.green.test.dao.BoardDao;
 import kr.green.test.vo.BoardVo;
+import kr.green.test.vo.FileVo;
 import kr.green.test.vo.UserVo;
 
 @Service
@@ -86,5 +87,16 @@ public class BoardServiceImp implements BoardService{
 		//페이지네이션 + 검색기능 : Dao에게 전체 게시글이 아닌 현재 페이지 정보
 		//(검색타입, 검색어 포함)에 맞는 게시글을 가져오라고 요청하도록 수정
 		return boardDao.getTotalCount(cri);
+	}
+
+	@Override
+	public void registerFile(int num, String originalFilename, String path) {
+		boardDao.insertFile(num, originalFilename, path);
+	}
+
+	@Override
+	public ArrayList<FileVo> getFileList(Integer num) {
+		
+		return boardDao.getFileList(num);
 	}
 }

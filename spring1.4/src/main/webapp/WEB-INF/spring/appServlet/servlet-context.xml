@@ -38,6 +38,10 @@
 		class="kr.green.test.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" 
 		class="kr.green.test.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <!-- 업로드 최대 크기 10Mb -->
+    	<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
 		
 	<interceptors>
 		<interceptor>

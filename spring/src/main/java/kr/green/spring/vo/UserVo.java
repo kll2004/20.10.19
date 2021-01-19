@@ -8,7 +8,15 @@ public class UserVo {
 	private String home;
 	private String name;
 	private Integer age;
+	private int author;
 	
+	
+	public int getAuthor() {
+		return author;
+	}
+	public void setAuthor(int author) {
+		this.author = author;
+	}
 	public String getId() {
 		return id;
 	}
@@ -53,8 +61,8 @@ public class UserVo {
 	}
 	@Override
 	public String toString() {
-		return "Uservo [id=" + id + ", pw=" + pw + ", pw2=" + pw2 + ", email=" + email + ", home=" + home + ", name="
-				+ name + ", age=" + age + "]";
+		return "UserVo [id=" + id + ", pw=" + pw + ", pw2=" + pw2 + ", email=" + email + ", home=" + home + ", name="
+				+ name + ", age=" + age + ", author=" + author + "]";
 	}
 	public String getTest() {
 		return "테스트입니다";

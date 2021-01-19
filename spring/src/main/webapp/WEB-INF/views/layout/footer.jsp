@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <div class="container-fluid">
   <div class="jumbotron">
-  <h1>푸터</h1>		
+  <h1>빈공간</h1>		
   </div>    
 </div>

@@ -30,5 +30,7 @@ public interface BoardService {
 	void registerFile(int num, String originalFilename, String path);
 
 	ArrayList<FileVo> getFileList(Integer num);
+
+	void deleteFile(int num);
 	
 }

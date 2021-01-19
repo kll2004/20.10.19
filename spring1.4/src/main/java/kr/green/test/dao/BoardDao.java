@@ -25,4 +25,6 @@ public interface BoardDao {
 	void insertFile(@Param("num")int num, @Param("filename")String originalFilename, @Param("path")String path);
 
 	ArrayList<FileVo> getFileList(@Param("num")Integer num);
+
+	void deleteFile(@Param("num")int num);
 }

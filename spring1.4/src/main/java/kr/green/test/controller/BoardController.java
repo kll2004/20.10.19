@@ -98,14 +98,27 @@ public class BoardController {
 	@RequestMapping(value = "/board/modify", method = RequestMethod.GET)
 	public ModelAndView boardmodifyPost(ModelAndView mv, Integer num) {
 		BoardVo board = boardService.getBoard(num);
+		ArrayList<FileVo> fileList = boardService.getFileList(num);
+		mv.addObject("fileList",fileList);
 		mv.addObject("board",board);
 		mv.setViewName("/board/modify");
 		return mv;
 	}
 	@RequestMapping(value = "/board/modify", method = RequestMethod.POST)
-	public ModelAndView boardmodifyPost(ModelAndView mv, BoardVo board, HttpServletRequest request) {
+	public ModelAndView boardmodifyPost(ModelAndView mv, BoardVo board, HttpServletRequest request, MultipartFile [] fileList) throws IOException, Exception {
 		UserVo user = userService.getUser(request);
 		boardService.modifyBoard(board, user);
+		//기존첨부파일 삭제
+		boardService.deleteFile(board.getNum());
+		//새 첨부파일 업로드 및 DB추가	
+		if(fileList != null && fileList.length != 0) {
+			for(MultipartFile file : fileList) {
+				if(file != null && file.getOriginalFilename().length() != 0) {
+					String path = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
+					boardService.registerFile(board.getNum(), file.getOriginalFilename(), path);
+				}
+			}
+		}		
 		mv.setViewName("redirect:/board/list");
 		return mv;
 	}

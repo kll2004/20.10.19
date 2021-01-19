@@ -99,4 +99,9 @@ public class BoardServiceImp implements BoardService{
 		
 		return boardDao.getFileList(num);
 	}
+
+	@Override
+	public void deleteFile(int num) {
+		boardDao.deleteFile(num);
+	}
 }

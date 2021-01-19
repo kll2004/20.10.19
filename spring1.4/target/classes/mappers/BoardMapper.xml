@@ -65,4 +65,7 @@
 	<select id="getFileList" resultType="kr.green.test.vo.FileVo">
 		select * from files where boardNum = #{num} and isDel = 'N'
 	</select>
+	<update id="deleteFile">
+		update files set isDel = 'Y' where boardNum = #{num}
+	</update>
 	</mapper>

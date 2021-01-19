@@ -31,6 +31,7 @@
             <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="${user.id}">
             <label for="id" class="error" class="id-error"></label>
         </div>
+        <button type="button" class="btn btn-outline-success col-12" id="dup">아이디 중복검사</button>
         <div class="form-group">
             <input type="text" class="form-control" id="pw" name="pw" placeholder="비밀번호" value="${user.pw}">
             <label for="pw" class="error" id="pw-error"></label>
@@ -57,6 +58,41 @@
         </div>
         <button class="btn btn-outline-success col-12">회원가입 완료</button>
     </form>
-    ${user.test}
+    <script type="text/javascript">
+    	var dup = false;
+	    $('#dup').click(function () {
+			var id = $('input[name=id]').val();
+			if(id == ''){
+				alert('아이디를 입력하세요');
+				return;
+			}
+			var data = {'id' : id};
+		    $.ajax({
+				url : '<%=request.getContextPath()%>/dup',
+				type : 'post',
+				data : data,
+				success : function(data){
+					if(data == 'user'){
+						alert('이미 가입한 아이디')
+					}else{
+						alert('가입 가능한 가입한 아이디')
+						dup = true;
+					}
+				},
+				error : function(){
+					console.log('실패');
+				}
+			})
+	    })
+	    $('input[name=id]').change(function(){
+	    	dup = false;
+	    })
+	    $('form').submit(function(){
+	    	if(!dup){
+	    		alert('아이디 중복검사를 하세요.');
+	    		return false;
+	    	}
+	    })
+    </script>
 </body>
 </html>

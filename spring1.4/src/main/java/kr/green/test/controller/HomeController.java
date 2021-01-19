@@ -107,4 +107,35 @@ public class HomeController {
 		mv.setViewName("/main/test1");
 		return mv;
 	}
+	@RequestMapping(value = "/test2", method = RequestMethod.GET)
+	public ModelAndView test2Get(ModelAndView mv, String name) {
+		System.out.println("/test2 이름 : " + name);
+		mv.setViewName("/main/test2");
+		return mv;
+	}
+	@RequestMapping(value = "/test3", method = RequestMethod.GET)
+	public ModelAndView test3Get(ModelAndView mv,testVo testVo) {
+		System.out.println("/test3 정보 : " + testVo);
+		mv.setViewName("/main/test2");
+		return mv;
+	}
+	@RequestMapping(value = "/test4", method = RequestMethod.GET)
+	public ModelAndView test4Get(ModelAndView mv,String [] name) {
+		for(String tmp : name) {
+			System.out.println("/test4 정보 : " + tmp);
+				}
+		mv.setViewName("/main/test2");
+		return mv;
+	}
+	@RequestMapping(value = "/test5", method = RequestMethod.GET)
+	public ModelAndView test5Get(ModelAndView mv,String name) {
+		
+		System.out.println("/test5 이름 : " + name);
+		String [] names = name.split(",");
+		for(String tmp : names) {
+			System.out.println("이름 : " + tmp);
+		}
+		mv.setViewName("/main/test2");
+		return mv;
+	}
 }

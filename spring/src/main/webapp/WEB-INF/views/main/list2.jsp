@@ -19,22 +19,43 @@
 			<td>수정</td>
 		</tr>
 		<c:forEach items="${list}" var="user">
-		<tr>
-			<td>${user.id}</td>
+		<tr class="user-row">
+			<td class=id>${user.id}</td>
 			<td>${user.name}</td>
 			<td>${user.email}</td>
 			<td>${user.age}</td>
 			<td>${user.home}</td>
 			<td>
-				<select>
+				<select class="author">
 					<c:forEach begin="1" end="10" var="i">
 						<option <c:if test="${i == user.author}">selected</c:if> >${i}</option>
 					</c:forEach>
 				</select>
 			</td>
-			<td><button class="btn btn-outline-success">수정</button> </td>
+			<td><button class="btn btn-outline-success modify-btn">수정</button> </td>
 		</tr>
 		</c:forEach>
 	</table>
 </body>
+<script>
+	$('.modify-btn').click(function(){
+		var id = $(this).parents('.user-row').find('.id').text();
+		var author = $(this).parents('.user-row').find('.author').val();
+		var sendData = {'id' : id, 'author' : author };
+		console.log(sendData)
+		$.ajax({
+			url : '<%=request.getContextPath()%>/author/modify',
+			type : 'post',
+			data : JSON.stringify(sendData),
+		 	dataType:"json",
+	        contentType:"application/json; charset=UTF-8",
+			success : function(data){
+				alert('권한 변경 성공')
+			},
+			error : function(){
+				alert('권한 변경 실패')
+			}
+		})
+	})
+</script>
 </html>

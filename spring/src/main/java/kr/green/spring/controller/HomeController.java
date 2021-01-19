@@ -1,6 +1,7 @@
 package kr.green.spring.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -89,8 +91,8 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/ajax1", method = RequestMethod.POST)
 	@ResponseBody
-	public String ajaxPost(TestVo testVo) {
-		System.out.println("ajax 테스트 성공");
+	public String ajax1Post(TestVo testVo) {
+		System.out.println("ajax1 테스트 성공");
 		System.out.println(testVo);
 		return testVo.toString();
 	}
@@ -101,5 +103,21 @@ public class HomeController {
 		if(user == null)
 			return "not user";
 		return "user";
+	}
+	@RequestMapping(value = "/ajax2", method = RequestMethod.POST)
+	@ResponseBody
+	public Object ajax2Post(@RequestBody TestVo testVo) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		ArrayList<UserVo> list = userService.getAllUser();
+		map.put("list", list);
+		map.put("testVo", testVo);
+		return map;
+	}
+	@RequestMapping(value = "/author/modify", method = RequestMethod.POST)
+	@ResponseBody
+	public Object authormodifyPost(@RequestBody UserVo userVo) {
+		userService.updateAuthor(userVo);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		return map;
 	}
 }

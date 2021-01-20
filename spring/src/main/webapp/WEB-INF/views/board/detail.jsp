@@ -34,7 +34,7 @@
 		
 		<div class="form-group">
 			<label for="content">내용</label>
-			<textarea class="form-control" id="content" name="content" readonly>${board.content}</textarea>
+			<div>${board.content}</div>
 		</div>
 		<div class="form-group">
 			<button type="button" class="btn btn-<c:if test="${like == null || like.up !=1 }">outline-</c:if>success up">추천</button>

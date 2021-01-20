@@ -141,12 +141,40 @@ public class HomeController {
 			map.put("result", "비회원");
 		else {
 			//비밀번호 랜덤으로 새로 생성
+			/*
+			비밀번호는 8자
+			비밀번호는 0~9, a~z, A~Z에서 랜덤으로 선택되서 새 비밀번호 생성
+			랜덤으로 0~61사이의 숫자를 뽑아서0~9이면 그냥 숫자로
+			10~35면 소문자a~z로
+			61~61이면 대문자A~Z로
+			예시 : 랜덤 숫자가 9 15 26 7 15 35
+			*/
+			int size = 8;
+			String newPw="";
+			for(int i=0; i<8; i++) {
+				int r = (int)(Math.random()*62);
+				char ch;
+				if(r<=9) {
+					//숫자0~9를 문자 '0'~'9'로 만드는 코드
+					ch = (char)('0' + r);
+				}else if(r <=35) {
+					ch = (char)('a' + (r-10));
+					//숫자 10~35를 문자 'a'~'z'로 만드는 코드
+				}else {
+					//숫자 36~61를 문자 'A'~'Z'로 만드는 코드
+					ch = (char)('A' + (r-36));
+				}
+				newPw += ch;
+			}
+			System.out.println(newPw);
 			//새 비밀번호 DB에 업데이트
+			dbUser.setPw(newPw);
+			userService.updateUser(dbUser);
 			//새 비밀번호 메일로 전송
 			String setfrom = "askll2004@gmail.com";         
 		    String tomail  = dbUser.getEmail();     // 받는 사람 이메일
 		    String title   = "비밀번호 찿기";      // 제목
-		    String content = "1234";    // 내용
+		    String content = "새 비밀번호 : " + newPw;    // 내용
 
 		    try {
 		        MimeMessage message = mailSender.createMimeMessage();
@@ -167,5 +195,21 @@ public class HomeController {
 			map.put("result", "성공");
 		}		
 		return map;
+	}
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public ModelAndView mypageGet(ModelAndView mv) {
+		mv.setViewName("/main/mypage");
+		return mv;
+	}
+	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	public ModelAndView mypagePost(ModelAndView mv,UserVo user, HttpServletRequest request) {
+		//화면에서 넘겨준 정보 가져오기
+		//화면에서 넘겨준 정보를 이용하여 DB에 정보 수정하기
+		userService.updateUser(user);
+		//세션에 저장된 회원 정보 수정하기
+		System.out.println(user);
+		request.getSession().setAttribute("user",user);
+		mv.setViewName("redirect:/mypage");
+		return mv;
 	}
 }

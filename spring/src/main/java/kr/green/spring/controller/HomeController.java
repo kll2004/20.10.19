@@ -3,11 +3,14 @@ package kr.green.spring.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,8 @@ public class HomeController {
 	
 	@Autowired
 	UserService userService;
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homeGet(ModelAndView mv, String name) {
@@ -118,6 +123,49 @@ public class HomeController {
 	public Object authormodifyPost(@RequestBody UserVo userVo) {
 		userService.updateAuthor(userVo);
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		return map;
+	}
+	@RequestMapping(value = "/find/pw", method = RequestMethod.GET)
+	public ModelAndView findpwGet(ModelAndView mv) {
+		mv.setViewName("/main/findpw");
+		return mv;
+	}
+	@RequestMapping(value = "/find/pw", method = RequestMethod.POST)
+	@ResponseBody
+	public Object findpwPost(@RequestBody UserVo user) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		UserVo dbUser = userService.getUser(user.getId());
+		System.out.println(dbUser);
+		if(dbUser == null)
+			map.put("result", "비회원");
+		else {
+			//비밀번호 랜덤으로 새로 생성
+			//새 비밀번호 DB에 업데이트
+			//새 비밀번호 메일로 전송
+			String setfrom = "askll2004@gmail.com";         
+		    String tomail  = dbUser.getEmail();     // 받는 사람 이메일
+		    String title   = "비밀번호 찿기";      // 제목
+		    String content = "1234";    // 내용
+
+		    try {
+		        MimeMessage message = mailSender.createMimeMessage();
+		        MimeMessageHelper messageHelper 
+		            = new MimeMessageHelper(message, true, "UTF-8");
+
+		        messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
+		        messageHelper.setTo(tomail);     // 받는사람 이메일
+		        messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+		        messageHelper.setText(content);  // 메일 내용
+
+		        mailSender.send(message);
+		    } catch(Exception e){
+		        System.out.println(e);
+		        map.put("result", "실패");
+		        return map;
+		    }
+			map.put("result", "성공");
+		}		
 		return map;
 	}
 }

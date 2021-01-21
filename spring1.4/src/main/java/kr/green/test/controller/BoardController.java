@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +27,7 @@ import kr.green.test.service.BoardService;
 import kr.green.test.utills.UploadFileUtils;
 import kr.green.test.vo.BoardVo;
 import kr.green.test.vo.FileVo;
+import kr.green.test.vo.LikeVo;
 import kr.green.test.vo.UserVo;
 
 @Controller
@@ -151,5 +153,13 @@ public class BoardController {
 	        in.close();
 	    }
 	    return entity;
+	}
+	
+	@RequestMapping(value = "/board/like", method = RequestMethod.POST)
+	@ResponseBody
+	public String boardlikeGrt(LikeVo likeVo) {
+		System.out.println(likeVo);
+		boardService.updateLike(likeVo);
+		return "ok";
 	}
 }

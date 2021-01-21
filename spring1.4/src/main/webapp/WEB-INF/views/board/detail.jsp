@@ -13,11 +13,11 @@
 	  <form action="/action_page.php">
 	    <div class="form-group">
 	      <label>번호</label>
-	      <input type="text" class="form-control" name="username" value="${board.num}"readonly>
+	      <input type="text" class="form-control" name="num" value="${board.num}"readonly>
 	    </div>
 	    <div class="form-group">
 	      <label>제목</label>
-	      <input type="text" class="form-control"  name="password"  value="${board.title}" readonly>
+	      <input type="text" class="form-control"  name="title"  value="${board.title}" readonly>
 	    </div>
 	    <div class="form-group">
 	      <label>작성자</label>
@@ -35,6 +35,10 @@
 	      <label>내용</label>
 	      <textarea rows="10" class="form-control"name="content" readonly>${board.content}</textarea>
 	    </div>
+    	<div>
+		  <button type="button" class="btn btn-outline up">추천</button>
+		  <button type="button" class="btn btn-outline down">비추천</button>
+		</div>
     	<c:if test="${fLile.size() !=0}">
 		  	<div class="form-group">
 			<label>첨부파일</label>
@@ -46,12 +50,12 @@
 	  </form>
 	  </c:if>
 	</div>
-	<a href="<%=request.getContextPath()%>/board/list?page=${cri.page}&type=${cri.type}&search=${cri.search}">
-		<button type="button" class="btn btn-primary">목록</button>
-	</a>
-	<a href="<%=request.getContextPath()%>/board/register">
-		<button type="button" class="btn btn-primary">글쓰기</button>
-	</a>
+		<a href="<%=request.getContextPath()%>/board/list?page{cri.page}&type=${cri.type}&search=${cri.search}">
+			<button type="button" class="btn btn-primary">목록</button>
+		</a>
+		<a href="<%=request.getContextPath()%>/board/register">
+			<button type="button" class="btn btn-primary">글쓰기</button>
+		</a>
 	<c:if test="${user != null && user.id == board.writer}">
 		<a href="<%=request.getContextPath()%>/board/modify?num=${board.num}">
 			<button type="button" class="btn btn-primary">수정</button>
@@ -60,5 +64,45 @@
 			<button type="button" class="btn btn-primary">삭제</button>
 		</a>
 	</c:if>
+	<script type="text/javascript">
+		$('.btn.up, .btn.down').click(function(){
+			var up;
+			if($(this).hasClass('up')){
+				up = 1;
+			}else{
+				up = -1;
+			}
+			var id = '${user.id}';
+			if(id == ''){
+				alert('추천기능은 로그인후 이용가능');
+				return;
+			}
+			var boardNum = $('input[name=num]').val();
+			var data = {'id' : id, 'boardNum':boardNum,'up':up};
+			$.ajax({
+				type : 'POST',
+				url : '<%=request.getContextPath()%>/board/like',
+				data : data,
+				success : function(data){
+					if(up == 1){
+						alert('추천')
+					}else{
+						alert('비추천')
+					}
+				}
+			})
+		})
+			
+			
+			//var id = '${user.id}';
+			//if(id == ''){
+			//	alert('회원만 추천 가능')
+			//	return;
+			//}
+			//var board = {}
+			//var data = {'id' : id, 'boardnum':boardnum,'up':up};
+			//var data = {'id' : id, 'boardNum':1,'up':1};
+			
+	</script>
 </body>
 </html>

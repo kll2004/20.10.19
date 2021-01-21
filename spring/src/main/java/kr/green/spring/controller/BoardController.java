@@ -150,7 +150,6 @@ public class BoardController {
 	@RequestMapping(value = "/board/like", method = RequestMethod.POST)
 	@ResponseBody
 	public Object authormodifyPost(@RequestBody LikeVo likeVo) {
-		System.out.println("/board/like : " + likeVo);
 		boardService.like(likeVo);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		return map;

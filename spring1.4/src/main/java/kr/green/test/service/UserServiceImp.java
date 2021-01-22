@@ -1,8 +1,11 @@
 package kr.green.test.service;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +16,13 @@ import kr.green.test.vo.UserVo;
 public class UserServiceImp implements UserService{
 	@Autowired
 	private UserDao userDao;
-
+	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	
 	@Override
 	public String getEmail(String id) {
@@ -64,5 +71,32 @@ public class UserServiceImp implements UserService{
 	@Override
 	public UserVo getUser(HttpServletRequest request) {
 		return (UserVo)request.getSession().getAttribute("user");
+	}
+	@Override
+	public void updateUser(UserVo user) {
+		if(user == null)
+			return;
+		String encodepw = passwordEncoder.encode(user.getPw());
+		user.setPw(encodepw);
+		userDao.updateUser(user);
+		//받아온 회원정보의 비밀번호를 암호화하여 재설정
+	}
+
+	@Override
+	public void sendMail(String title, String content, String email) {
+		try {
+	        MimeMessage message = mailSender.createMimeMessage();
+	        MimeMessageHelper messageHelper 
+	            = new MimeMessageHelper(message, true, "UTF-8");
+
+	        messageHelper.setFrom("green@naver.com"); 
+	        messageHelper.setTo(email);     		
+	        messageHelper.setSubject(title); 		
+	        messageHelper.setText(content);  			
+
+	        mailSender.send(message);
+	    } catch(Exception e){
+	        System.out.println(e);
+	    }
 	}
 }

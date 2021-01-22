@@ -45,7 +45,6 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView signupPost(ModelAndView mv,UserVo user) {
-		System.out.println(user);
 		//회원가입을 진행시키기 위해 userService에게 일을 시키기위한 메소드를 생성해보세요.
 		boolean isSignup = userService.signup(user);
 		if(isSignup) {
@@ -97,8 +96,6 @@ public class HomeController {
 	@RequestMapping(value = "/ajax1", method = RequestMethod.POST)
 	@ResponseBody
 	public String ajax1Post(TestVo testVo) {
-		System.out.println("ajax1 테스트 성공");
-		System.out.println(testVo);
 		return testVo.toString();
 	}
 	@RequestMapping(value = "/dup", method = RequestMethod.POST)
@@ -136,7 +133,6 @@ public class HomeController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		UserVo dbUser = userService.getUser(user.getId());
-		System.out.println(dbUser);
 		if(dbUser == null)
 			map.put("result", "비회원");
 		else {

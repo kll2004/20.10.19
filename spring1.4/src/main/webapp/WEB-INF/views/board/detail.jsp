@@ -36,8 +36,8 @@
 	      <textarea rows="10" class="form-control"name="content" readonly>${board.content}</textarea>
 	    </div>
     	<div>
-		  <button type="button" class="btn btn-outline up">추천</button>
-		  <button type="button" class="btn btn-outline down">비추천</button>
+		  <button type="button" class="btn btn-<c:if test="${like == null || like.up != 1}">outline-</c:if>dark up">추천</button>
+		  <button type="button" class="btn btn-<c:if test="${like == null || like.up != -1}">outline-</c:if>dark down">비추천</button>
 		</div>
     	<c:if test="${fLile.size() !=0}">
 		  	<div class="form-group">
@@ -50,7 +50,7 @@
 	  </form>
 	  </c:if>
 	</div>
-		<a href="<%=request.getContextPath()%>/board/list?page{cri.page}&type=${cri.type}&search=${cri.search}">
+		<a href="<%=request.getContextPath()%>/board/list?page=${cri.page}&type=${cri.type}&search=${cri.search}">
 			<button type="button" class="btn btn-primary">목록</button>
 		</a>
 		<a href="<%=request.getContextPath()%>/board/register">
@@ -65,13 +65,26 @@
 		</a>
 	</c:if>
 	<script type="text/javascript">
+		var up = '${like.up}';
+		console.log(up);
 		$('.btn.up, .btn.down').click(function(){
-			var up;
+			//추천버튼을 클릭하면
 			if($(this).hasClass('up')){
-				up = 1;
-			}else{
-				up = -1;
-			}
+				//추천상태에서 추천버튼을 클릭하면
+				if(up == 1)
+					up = 0;
+				//추천상태가 아닌상황에서 추천버튼을 클릭하면
+				else
+					up = 1;
+					//비추천 버튼을 클릭하면
+				}else{
+					//비추천상태에서 비추천버튼을 클릭하면
+					if(up == -1)
+					up = 0;
+				//비추천상태가 아닌 상황에서 비추천버튼을 클릭하면
+				else
+					up = -1;
+				}		
 			var id = '${user.id}';
 			if(id == ''){
 				alert('추천기능은 로그인후 이용가능');
@@ -92,8 +105,6 @@
 				}
 			})
 		})
-			
-			
 			//var id = '${user.id}';
 			//if(id == ''){
 			//	alert('회원만 추천 가능')

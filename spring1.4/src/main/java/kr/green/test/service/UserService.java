@@ -15,5 +15,4 @@ public interface UserService {
 	boolean signup(UserVo user);
 	
 	UserVo getUser(HttpServletRequest request);
-
 }

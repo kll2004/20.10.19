@@ -35,5 +35,7 @@ public interface BoardService {
 	void deleteFile(int num);
 
 	void updateLike(LikeVo likeVo);
+
+	LikeVo getLike(LikeVo like);
 	
 }
